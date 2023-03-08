@@ -32,7 +32,7 @@
 
             <asp:Label ID="lblOrderLineID" runat="server" Text="Order Line ID" width="144px"></asp:Label> 
 
-            <asp:TextBox ID="TextBox2" runat="server" width="308px"></asp:TextBox> 
+            <asp:TextBox ID="txtOrderLineID" runat="server" width="308px"></asp:TextBox> 
 
         </p> 
 
@@ -44,25 +44,25 @@
 
             <asp:Label ID="lblProductID" runat="server" Text="Product Name" width="144px"></asp:Label> 
 
-            <asp:TextBox ID="TextBox4" runat="server" width="308px"></asp:TextBox> 
+            <asp:TextBox ID="txtProductName" runat="server" width="308px"></asp:TextBox> 
 
         </p> 
 
         <asp:Label ID="lblPrice" runat="server" Text="Price" width="144px"></asp:Label> 
 
-        <asp:TextBox ID="TextBox5" runat="server" width="308px"></asp:TextBox> 
+        <asp:TextBox ID="txtPrice" runat="server" width="308px"></asp:TextBox> 
 
         <p> 
 
             <asp:Label ID="lblQuantity" runat="server" Text="Quantity" width="144px"></asp:Label> 
 
-            <asp:TextBox ID="TextBox6" runat="server" width="308px"></asp:TextBox> 
+            <asp:TextBox ID="txtQuantity" runat="server" width="308px"></asp:TextBox> 
 
         </p> 
 
         <asp:Label ID="lblDateRecieved" runat="server" Text="Date Recieved" width="144px"></asp:Label> 
 
-        <asp:TextBox ID="TextBox7" runat="server" width="308px"></asp:TextBox> 
+        <asp:TextBox ID="txtDateRecieved" runat="server" width="308px"></asp:TextBox> 
 
         <p> 
 
