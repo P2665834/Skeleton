@@ -17,6 +17,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsSupplier ASupplier = new clsSupplier();
         ASupplier.ProductName = txtProductName.Text;
+        ASupplier.SupplierId = Convert.ToInt32(txtSupplierID.Text);
+        ASupplier.DatePurchased = Convert.ToDateTime(txtDatePurchased.Text);
+        ASupplier.QuantityOfProducts = Convert.ToInt32(txtQuantityOfProducts.Text);
+        ASupplier.UnitPrice = (float)Convert.ToDouble(txtUnitPrice.Text);
+        ASupplier.Available = Convert.ToBoolean(chkAvailable.Checked);
+
         Session["ASupplier"] = ASupplier;
         Response.Redirect("SuppliersViewer.aspx");
     }
