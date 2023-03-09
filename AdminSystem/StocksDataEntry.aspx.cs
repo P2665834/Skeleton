@@ -17,6 +17,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsStock AStock = new clsStock();
         AStock.ProductName = txtProductName.Text;
+        AStock.StockId = Convert.ToInt32(txtStockID.Text);
+        AStock.DateOfPurchase = Convert.ToDateTime(txtDateOfPurchase.Text);
+        AStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
+        AStock.UnitPrice = (float)Convert.ToDouble(txtUnitPrice.Text);
+        AStock.Available = Convert.ToBoolean(chkAvailable.Checked);
+
         Session["AStock"] = AStock;
         Response.Redirect("StocksViewer.aspx");
     }
