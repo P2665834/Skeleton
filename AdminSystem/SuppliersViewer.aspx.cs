@@ -13,6 +13,12 @@ public partial class _1Viewer : System.Web.UI.Page
         clsSupplier ASupplier = new clsSupplier();
         ASupplier = (clsSupplier)Session["ASupplier"];
         Response.Write(ASupplier.ProductName);
+        Response.Write(ASupplier.SupplierId);
+        Response.Write(ASupplier.QuantityOfProducts);
+        Response.Write(ASupplier.DatePurchased);
+        Response.Write(ASupplier.UnitPrice);
+        Response.Write(ASupplier.Available);
+
 
     }
 }
