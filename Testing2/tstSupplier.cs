@@ -68,5 +68,110 @@ namespace Testing2
             ASupplier.UnitPrice = TestData;
             Assert.AreEqual(ASupplier.UnitPrice, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Int32 QuantityOfProducts = 21;
+            Found = ASupplier.Find(QuantityOfProducts);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestQuantityOfProductsFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 QuantityOfProducts = 21;
+            Found = ASupplier.Find(QuantityOfProducts);
+            if(ASupplier.QuantityOfProducts != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDatePurchasedFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 QuantityOfProducts = 21;
+            Found = ASupplier.Find(QuantityOfProducts);
+            if(ASupplier.DatePurchased != Convert.ToDateTime("09/03/2023"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+            
+        }
+       
+        [TestMethod]
+        public void TestAvailableFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 QuantityOfProducts = 21;
+            Found = ASupplier.Find(QuantityOfProducts);
+            if (ASupplier.Available != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestUnitPriceFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 QuantityOfProducts = 21;
+            Found = ASupplier.Find(QuantityOfProducts);
+            if (ASupplier.UnitPrice != (float)Convert.ToDouble("1.0"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestProductNameFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 QuantityOfProducts = 21;
+            Found = ASupplier.Find(QuantityOfProducts);
+            if(ASupplier.ProductName != Convert.ToString("product"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierIDFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 QuantityOfProducts = 21;
+            Found = ASupplier.Find(QuantityOfProducts);
+            if(ASupplier.SupplierId != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+                    
+        }
+
+        
     }
 }
