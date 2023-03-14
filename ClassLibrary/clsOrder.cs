@@ -65,6 +65,8 @@ namespace ClassLibrary
             }
         }
 
+        public string ProductName { get; set; }
+
         public bool Find(int orderID)
         {
             mOrderID = 21;
