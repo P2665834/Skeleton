@@ -4,13 +4,75 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        public int Price { get; set; }
-        public int OrderID { get; set; }
-        public DateTime DateRecieved { get; set; }
-        public string CustomerName { get; set; }
-        public string ProductName { get; set; }
-        public int OrderLineID { get; set; }
-        public int Quantity { get; set; }
-        public bool Dispatched { get; set; }
+        private Int32 mOrderID;
+        private DateTime mDateRecieved;
+        private float mPrice;
+        private String mCustomerName;
+       
+
+
+        public float Price
+        {
+            get
+            {
+                return mPrice;
+
+            }
+
+            set
+            {
+                mPrice = value; 
+            }
+        }
+        public int OrderID
+
+        {
+            get
+            {
+                return OrderID;
+
+            }
+
+            set
+            {
+                mOrderID = value;
+            }
+        }
+        public DateTime DateRecieved
+        {
+            get
+            {
+                return DateRecieved;
+
+            }
+
+            set
+            {
+                mDateRecieved = value;
+            }
+        }
+        public string CustomerName
+        {
+            get
+            {
+                return CustomerName;
+
+            }
+
+            set
+            {
+                mCustomerName = value;
+            }
+        }
+
+        public bool Find(int orderID)
+        {
+            mOrderID = 21;
+            mDateRecieved = Convert.ToDateTime("13/03/2023");
+            mPrice = (float)Convert.ToDouble("1.0");
+            mCustomerName = Convert.ToString("Customer");
+            return true;
+
+        }
     }
 }

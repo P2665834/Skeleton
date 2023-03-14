@@ -49,5 +49,79 @@ namespace Testing1
             AnOrder.OrderID = TestData;
             Assert.AreEqual(AnOrder.OrderID, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Int32 OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            Assert.IsTrue(Found);
+
+        }
+
+        [TestMethod]
+        public void TestOrderIDFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.OrderID != 21)
+
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestDateRecieved()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.DateRecieved != Convert.ToDateTime("13/03/2023"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.Price != (float)Convert.ToDouble("1.0"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerNameFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.CustomerName != Convert.ToString("Customer"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
     }
 }
