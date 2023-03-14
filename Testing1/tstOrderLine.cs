@@ -59,5 +59,99 @@ namespace Testing1
             Assert.AreEqual(AnOrderLine.OrderID, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Int32 OrderLineID = 21;
+            Found = AnOrder.Find(OrderLineID);
+            Assert.IsTrue(Found);
+
+        }
+        [TestMethod]
+        public void TestOrderLineIDFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderLineID = 21;
+            Found = AnOrderLine.Find(OrderLineID);
+            if (AnOrderLine.OrderLineID != 21)
+
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestOrderIDFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderLineID = 21;
+            Found = AnOrderLine.Find(OrderLineID);
+            if (AnOrderLine.OrderID != 21)
+
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestProductNameFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderLineID = 21;
+            Found = AnOrderLine.Find(OrderLineID);
+            if (AnOrderLine.ProductName != Convert.ToString("Customer"))
+
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestQuantityFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderLineID = 21;
+            Found = AnOrderLine.Find(OrderLineID);
+            if (AnOrderLine.Quantity != 21)
+
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestDispatchedFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderLineID = 21;
+            Found = AnOrderLine.Find(OrderLineID);
+            if (AnOrderLine.Dispatched != true)
+
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
     }
 }
