@@ -8,7 +8,7 @@ namespace ClassLibrary
         private DateTime mDateRecieved;
         private float mPrice;
         private String mCustomerName;
-       
+
 
 
         public float Price
@@ -21,7 +21,7 @@ namespace ClassLibrary
 
             set
             {
-                mPrice = value; 
+                mPrice = value;
             }
         }
         public int OrderID
@@ -29,7 +29,7 @@ namespace ClassLibrary
         {
             get
             {
-                return OrderID;
+                return mOrderID;
 
             }
 
@@ -42,7 +42,7 @@ namespace ClassLibrary
         {
             get
             {
-                return DateRecieved;
+                return mDateRecieved;
 
             }
 
@@ -55,7 +55,7 @@ namespace ClassLibrary
         {
             get
             {
-                return CustomerName;
+                return mCustomerName;
 
             }
 
@@ -64,8 +64,6 @@ namespace ClassLibrary
                 mCustomerName = value;
             }
         }
-
-        public string ProductName { get; set; }
 
         public bool Find(int orderID)
         {

@@ -6,8 +6,8 @@ namespace ClassLibrary
         private Int32 mOrderID;
         private Int32 mOrderLineID;
         private String mProductName;
-        private int mQuantity;
-        private bool mDispatched; 
+        private Int32 mQuantity;
+        private Boolean mDispatched;
 
         public int OrderLineID
         {
@@ -37,7 +37,7 @@ namespace ClassLibrary
         {
             get
             {
-                return ProductName;
+                return mProductName;
             }
             set
             {
@@ -48,7 +48,7 @@ namespace ClassLibrary
         {
             get
             {
-                return Quantity;
+                return mQuantity;
             }
             set
             {
@@ -67,7 +67,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int OrderLineID)
+        public bool Find(int orderLineID)
         {
             mOrderID = 21;
             mOrderLineID = 21;
@@ -79,4 +79,3 @@ namespace ClassLibrary
     }
 
 }
-
