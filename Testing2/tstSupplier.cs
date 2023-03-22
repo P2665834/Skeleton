@@ -61,6 +61,16 @@ namespace Testing2
         }
 
         [TestMethod]
+        public void SupplierNameOK()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            string TestData = "supplier";
+            ASupplier.SupplierName = TestData;
+            Assert.AreEqual(ASupplier.SupplierName, TestData);
+
+        }
+
+        [TestMethod]
         public void UnitPriceOK()
         {
             clsSupplier ASupplier = new clsSupplier();
@@ -74,9 +84,25 @@ namespace Testing2
         {
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
-            Int32 QuantityOfProducts = 21;
-            Found = ASupplier.Find(QuantityOfProducts);
+            Int32 SupplierID = 2;
+            Found = ASupplier.Find(SupplierID);
             Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestSupplierIDFound()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 2;
+            Found = ASupplier.Find(SupplierID);
+            if (ASupplier.SupplierId != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
         }
 
         [TestMethod]
@@ -85,9 +111,9 @@ namespace Testing2
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 QuantityOfProducts = 21;
-            Found = ASupplier.Find(QuantityOfProducts);
-            if(ASupplier.QuantityOfProducts != 21)
+            Int32 SupplierID = 2;
+            Found = ASupplier.Find(SupplierID);
+            if(ASupplier.QuantityOfProducts != 30)
             {
                 OK = false;
             }
@@ -100,9 +126,9 @@ namespace Testing2
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 QuantityOfProducts = 21;
-            Found = ASupplier.Find(QuantityOfProducts);
-            if(ASupplier.DatePurchased != Convert.ToDateTime("09/03/2023"))
+            Int32 SupplierID = 2;
+            Found = ASupplier.Find(SupplierID);
+            if(ASupplier.DatePurchased != Convert.ToDateTime("07/02/2023"))
             {
                 OK = false;
             }
@@ -116,8 +142,8 @@ namespace Testing2
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 QuantityOfProducts = 21;
-            Found = ASupplier.Find(QuantityOfProducts);
+            Int32 SupplierID = 2;
+            Found = ASupplier.Find(SupplierID);
             if (ASupplier.Available != true)
             {
                 OK = false;
@@ -125,15 +151,16 @@ namespace Testing2
             Assert.IsTrue(OK);
 
         }
+
         [TestMethod]
         public void TestUnitPriceFound()
         {
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 QuantityOfProducts = 21;
-            Found = ASupplier.Find(QuantityOfProducts);
-            if (ASupplier.UnitPrice != (float)Convert.ToDouble("1.0"))
+            Int32 SupplierID = 2;
+            Found = ASupplier.Find(SupplierID);
+            if (ASupplier.UnitPrice != Convert.ToDouble("225"))
             {
                 OK = false;
             }
@@ -146,9 +173,9 @@ namespace Testing2
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 QuantityOfProducts = 21;
-            Found = ASupplier.Find(QuantityOfProducts);
-            if(ASupplier.ProductName != Convert.ToString("product"))
+            Int32 SupplierID = 2;
+            Found = ASupplier.Find(SupplierID);
+            if(ASupplier.ProductName != Convert.ToString("Chromebook CM14"))
             {
                 OK = false;
             }
@@ -156,22 +183,20 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void TestSupplierIDFound()
+        public void TestSupplierNameFound()
         {
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 QuantityOfProducts = 21;
-            Found = ASupplier.Find(QuantityOfProducts);
-            if(ASupplier.SupplierId != 21)
+            Int32 SupplierID = 2;
+            Found = ASupplier.Find(SupplierID);
+            if (ASupplier.SupplierName != Convert.ToString("Asus"))
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
-
-                    
         }
 
-        
+
     }
 }
