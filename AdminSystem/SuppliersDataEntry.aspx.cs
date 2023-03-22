@@ -16,14 +16,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsSupplier ASupplier = new clsSupplier();
-        ASupplier.ProductName = txtProductName.Text;
         ASupplier.SupplierId = Convert.ToInt32(txtSupplierID.Text);
-        ASupplier.DatePurchased = Convert.ToDateTime(txtDatePurchased.Text);
+        ASupplier.SupplierName = Convert.ToString(txtSupplierName.Text);
+        ASupplier.ProductName = Convert.ToString(txtProductName.Text);
         ASupplier.QuantityOfProducts = Convert.ToInt32(txtQuantityOfProducts.Text);
         ASupplier.UnitPrice = (float)Convert.ToDouble(txtUnitPrice.Text);
+        ASupplier.DatePurchased = Convert.ToDateTime(txtDatePurchased.Text);
         ASupplier.Available = Convert.ToBoolean(chkAvailable.Checked);
+        
 
         Session["ASupplier"] = ASupplier;
         Response.Redirect("SuppliersViewer.aspx");
+    }
+
+
+
+
+
+
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsSupplier ASupplier = new clsSupplier();
+        Int32 SupplierID;
+        Boolean Found = false;
+        SupplierID = Convert.ToInt32(txtSupplierID.Text);
+        Found = ASupplier.Find(SupplierID);
+        if (Found == true)
+        {
+            txtSupplierName.Text = ASupplier.SupplierName;
+            txtProductName.Text = ASupplier.ProductName;
+            txtQuantityOfProducts.Text = ASupplier.QuantityOfProducts.ToString();
+            txtUnitPrice.Text = ASupplier.UnitPrice.ToString();
+            txtDatePurchased.Text = ASupplier.DatePurchased.ToString();
+            chkAvailable.Checked = ASupplier.Available;
+
+        }
+
     }
 }

@@ -5,12 +5,14 @@ namespace ClassLibrary
     public class clsSupplier
     {
 
+        private Int32 mSupplierID;
+        private String mSupplierName;
+        private String mProductName;
         private Int32 mQuantityOfProducts;
+        private float mUnitPrice;
         private DateTime mDatePurchased;
         private Boolean mAvailable;
-        private float mUnitPrice;
-        private String mProductName;
-        private Int32 mSupplierID;
+
 
         public bool Available
         {
@@ -23,7 +25,7 @@ namespace ClassLibrary
                 mAvailable = value;
             }
         }
-                
+
         public DateTime DatePurchased
         {
             get
@@ -35,7 +37,7 @@ namespace ClassLibrary
                 mDatePurchased = value;
             }
         }
-               
+
         public int QuantityOfProducts
         {
             get
@@ -47,7 +49,7 @@ namespace ClassLibrary
                 mQuantityOfProducts = value;
             }
         }
-                
+
         public string ProductName
         {
             get
@@ -81,17 +83,43 @@ namespace ClassLibrary
                 mUnitPrice = value;
             }
         }
-
-        public bool Find(int quantityOfProducts)
+        public String SupplierName
         {
-            mQuantityOfProducts = 21;
-            mDatePurchased = Convert.ToDateTime("09/03/2023");
-            mUnitPrice = (float)Convert.ToDouble("1.0");
-            mAvailable = Convert.ToBoolean(true);
-            mProductName = Convert.ToString("product");
-            mSupplierID = 21;
+            get
+            {
+                return mSupplierName;
+            }
+            set
+            {
+                mSupplierName = value;
+            }
+        }
+       
+        
 
-            return true;
+        public bool Find(int SupplierID)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierID", SupplierID);
+            DB.Execute("sproc_tblSupplier_FilterBySupplierID");
+            if (DB.Count == 1)
+            {
+                mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
+                mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                mQuantityOfProducts = Convert.ToInt32(DB.DataTable.Rows[0]["QuantityOfProducts"]);
+                mUnitPrice = (float)Convert.ToDouble(DB.DataTable.Rows[0]["UnitPrice"]);
+                mDatePurchased = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePurchased"]);
+                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+               
+
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         
     }
