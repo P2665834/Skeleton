@@ -55,7 +55,7 @@ namespace Testing1
         {
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             Found = AnOrder.Find(OrderID);
             Assert.IsTrue(Found);
 
@@ -67,9 +67,9 @@ namespace Testing1
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderID != 21)
+            if (AnOrder.OrderID != 1)
 
             {
                 OK = false;
@@ -84,9 +84,9 @@ namespace Testing1
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.DateRecieved != Convert.ToDateTime("13/03/2023"))
+            if (AnOrder.DateRecieved != Convert.ToDateTime("14/02/2023"))
             {
                 OK = false;
             }
@@ -99,9 +99,9 @@ namespace Testing1
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.Price != (float)Convert.ToDouble("1.0"))
+            if (AnOrder.Price != (float)Convert.ToDouble("1300"))
             {
                 OK = false;
             }
@@ -114,9 +114,9 @@ namespace Testing1
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.CustomerName != Convert.ToString("Customer"))
+            if (AnOrder.CustomerName != Convert.ToString("Joe Bloggs"))
             {
                 OK = false;
             }

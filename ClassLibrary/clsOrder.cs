@@ -65,14 +65,25 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int orderID)
+        public bool Find(int OrderID)
         {
-            mOrderID = 21;
-            mDateRecieved = Convert.ToDateTime("13/03/2023");
-            mPrice = (float)Convert.ToDouble("1.0");
-            mCustomerName = Convert.ToString("Customer");
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", OrderID);
+            DB.Execute("sproc_tblOrderID_FilterByOrderID");
 
+            if (DB.Count == 1)
+            {
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mDateRecieved = Convert.ToDateTime(DB.DataTable.Rows[0]["DateRecieved"]);
+                mPrice = (float)Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
