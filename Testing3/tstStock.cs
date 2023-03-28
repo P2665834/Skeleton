@@ -61,12 +61,12 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StockIdOK()
+        public void ProductIDOK()
         {
             clsStock AStock = new clsStock();
             Int32 TestData = 1;
-            AStock.StockId = TestData;
-            Assert.AreEqual(AStock.StockId, TestData);
+            AStock.ProductID = TestData;
+            Assert.AreEqual(AStock.ProductID, TestData);
         }
 
         [TestMethod]
@@ -74,35 +74,20 @@ namespace Testing3
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
-            Int32 StockQuantity = 21;
-            Found = AStock.Find(StockQuantity);
+            Int32 ProductID = 2;
+            Found = AStock.Find(ProductID);
             Assert.IsTrue(Found);
         }
 
         [TestMethod]
-        public void TestQuantityOfProductsFound()
+        public void TestProductIDFound()
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockQuantity = 21;
-            Found = AStock.Find(StockQuantity);
-            if (AStock.StockQuantity != 21)
-            {
-                OK = false;
-            }
-            Assert.IsTrue(OK);
-        }
-
-        [TestMethod]
-        public void TestUnitPriceFound()
-        {
-            clsStock AStock = new clsStock();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 StockQuantity = 21;
-            Found = AStock.Find(StockQuantity);
-            if (AStock.UnitPrice != (float)Convert.ToDouble("1.0"))
+            Int32 ProductID = 1;
+            Found = AStock.Find(ProductID);
+            if (AStock.ProductID != 1)
             {
                 OK = false;
             }
@@ -115,9 +100,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockQuantity = 21;
-            Found = AStock.Find(StockQuantity);
-            if (AStock.ProductName != Convert.ToString("product"))
+            Int32 ProductID = 1;
+            Found = AStock.Find(ProductID);
+            if (AStock.ProductName != Convert.ToString("HP 15s-fq2024na"))
             {
                 OK = false;
             }
@@ -125,14 +110,14 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void TestStockIDFound()
+        public void TestStockQuantityFound()
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockQuantity = 21;
-            Found = AStock.Find(StockQuantity);
-            if (AStock.StockId != 21)
+            Int32 ProductID = 1;
+            Found = AStock.Find(ProductID);
+            if (AStock.StockQuantity != 24)
             {
                 OK = false;
             }
@@ -140,14 +125,14 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void TestAvailableFound()
+        public void TestUnitPriceFound()
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockQuantity = 21;
-            Found = AStock.Find(StockQuantity);
-            if (AStock.Available != Convert.ToBoolean(false))
+            Int32 ProductID = 1;
+            Found = AStock.Find(ProductID);
+            if (AStock.UnitPrice != (float)Convert.ToDouble("250"))
             {
                 OK = false;
             }
@@ -160,9 +145,24 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockQuantity = 21;
-            Found = AStock.Find(StockQuantity);
-            if (AStock.DateOfPurchase != Convert.ToDateTime("09/03/2023"))
+            Int32 ProductID = 1;
+            Found = AStock.Find(ProductID);
+            if (AStock.DateOfPurchase != Convert.ToDateTime("14/02/2023"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAvailableFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 1;
+            Found = AStock.Find(ProductID);
+            if (AStock.Available != Convert.ToBoolean(true))
             {
                 OK = false;
             }

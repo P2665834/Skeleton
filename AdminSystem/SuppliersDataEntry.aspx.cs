@@ -29,13 +29,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("SuppliersViewer.aspx");
     }
 
-
-
-
-
-
-
-
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsSupplier ASupplier = new clsSupplier();
