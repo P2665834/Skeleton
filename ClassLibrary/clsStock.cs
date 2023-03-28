@@ -4,56 +4,22 @@ namespace ClassLibrary
 {
     public class clsStock
     {
-        private Int32 mStockID;
-        private Boolean mAvailable;
+        private Int32 mProductID;
+        private String mProductName;
         private float mUnitPrice;
         private int mStockQuantity;
-        private String mProductName;
         private DateTime mDateOfPurchase;
+        private Boolean mAvailable;
 
-
-        public bool Available
+        public int ProductID
         {
             get
             {
-                return mAvailable;
+                return mProductID;
             }
             set
             {
-                mAvailable = value;
-            }
-        }
-        public DateTime DateOfPurchase
-        {
-            get
-            {
-                return mDateOfPurchase;
-            }
-            set
-            {
-                mDateOfPurchase = value;
-            }
-        }
-        public float UnitPrice
-        {
-            get
-            {
-                return mUnitPrice;
-            }
-            set
-            {
-                mUnitPrice = value;
-            }
-        }
-        public int StockQuantity
-        {
-            get
-            {
-                return mStockQuantity;
-            }
-            set
-            {
-                mStockQuantity = value;
+                mProductID = value;
             }
         }
         public string ProductName
@@ -67,27 +33,73 @@ namespace ClassLibrary
                 mProductName = value;
             }
         }
-        public int StockId
+        public int StockQuantity
         {
             get
             {
-                return mStockID;
+                return mStockQuantity;
             }
             set
             {
-                mStockID = value;
+                mStockQuantity = value;
+            }
+        }
+        public float UnitPrice
+        {
+            get
+            {
+                return mUnitPrice;
+            }
+            set
+            {
+                mUnitPrice = value;
             }
         }
 
-        public bool Find(int stockQuantity)
+        public DateTime DateOfPurchase
         {
-            mStockID = 21;
-            mAvailable = Convert.ToBoolean(false);
-            mUnitPrice = (float)Convert.ToDouble("1.0");
-            mStockQuantity = 21;
-            mProductName = Convert.ToString("product");
-            mDateOfPurchase = Convert.ToDateTime("09/03/2023");
-            return true;
+            get
+            {
+                return mDateOfPurchase;
+            }
+            set
+            {
+                mDateOfPurchase = value;
+            }
+        }
+
+        public bool Available
+        {
+            get
+            {
+                return mAvailable;
+            }
+            set
+            {
+                mAvailable = value;
+            }
+        }
+
+        public bool Find(int ProductID)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", ProductID);
+            DB.Execute("sproc_tblStock_FilterByProductID");
+            if (DB.Count == 1)
+            {
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+                mUnitPrice = (float)Convert.ToDouble(DB.DataTable.Rows[0]["UnitPrice"]);
+                mDateOfPurchase = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePurchased"]);
+                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

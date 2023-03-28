@@ -12,8 +12,8 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clsStock AStock = new clsStock();
         AStock = (clsStock)Session["AStock"];
+        Response.Write(AStock.ProductID);
         Response.Write(AStock.ProductName);
-        Response.Write(AStock.StockId);
         Response.Write(AStock.StockQuantity);
         Response.Write(AStock.DateOfPurchase);
         Response.Write(AStock.UnitPrice);
