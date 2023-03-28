@@ -64,7 +64,7 @@ namespace Testing1
         {
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
-            Int32 OrderLineID = 21;
+            Int32 OrderLineID = 1;
             Found = AnOrder.Find(OrderLineID);
             Assert.IsTrue(Found);
 
@@ -75,9 +75,9 @@ namespace Testing1
             clsOrderLine AnOrderLine = new clsOrderLine();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderLineID = 21;
+            Int32 OrderLineID = 1;
             Found = AnOrderLine.Find(OrderLineID);
-            if (AnOrderLine.OrderLineID != 21)
+            if (AnOrderLine.OrderLineID != 1)
 
             {
                 OK = false;
@@ -92,9 +92,9 @@ namespace Testing1
             clsOrderLine AnOrderLine = new clsOrderLine();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderLineID = 21;
+            Int32 OrderLineID = 1;
             Found = AnOrderLine.Find(OrderLineID);
-            if (AnOrderLine.OrderID != 21)
+            if (AnOrderLine.OrderID != 1)
 
             {
                 OK = false;
@@ -109,9 +109,9 @@ namespace Testing1
             clsOrderLine AnOrderLine = new clsOrderLine();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderLineID = 21;
+            Int32 OrderLineID = 1;
             Found = AnOrderLine.Find(OrderLineID);
-            if (AnOrderLine.ProductName != Convert.ToString("Product"))
+            if (AnOrderLine.ProductName != Convert.ToString("Macbook Air"))
 
             {
                 OK = false;
@@ -125,9 +125,9 @@ namespace Testing1
             clsOrderLine AnOrderLine = new clsOrderLine();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderLineID = 21;
+            Int32 OrderLineID = 1;
             Found = AnOrderLine.Find(OrderLineID);
-            if (AnOrderLine.Quantity != 21)
+            if (AnOrderLine.Quantity != 1)
 
             {
                 OK = false;
@@ -142,7 +142,7 @@ namespace Testing1
             clsOrderLine AnOrderLine = new clsOrderLine();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderLineID = 21;
+            Int32 OrderLineID = 1;
             Found = AnOrderLine.Find(OrderLineID);
             if (AnOrderLine.Dispatched != Convert.ToBoolean(false))
 
