@@ -15,18 +15,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        clsSupplier ASupplier = new clsSupplier();
-        ASupplier.SupplierId = Convert.ToInt32(txtSupplierID.Text);
-        ASupplier.SupplierName = Convert.ToString(txtSupplierName.Text);
-        ASupplier.ProductName = Convert.ToString(txtProductName.Text);
-        ASupplier.QuantityOfProducts = Convert.ToInt32(txtQuantityOfProducts.Text);
-        ASupplier.UnitPrice = (float)Convert.ToDouble(txtUnitPrice.Text);
-        ASupplier.DatePurchased = Convert.ToDateTime(txtDatePurchased.Text);
-        ASupplier.Available = Convert.ToBoolean(chkAvailable.Checked);
-        
 
-        Session["ASupplier"] = ASupplier;
-        Response.Redirect("SuppliersViewer.aspx");
+        clsSupplier ASupplier = new clsSupplier();
+
+        string SupplierName = txtSupplierName.Text;
+        string ProductName = txtProductName.Text;
+        string QuantityOfProducts = txtQuantityOfProducts.Text;
+        string UnitPrice = txtUnitPrice.Text;
+        string DatePurchased = txtDatePurchased.Text;
+        string Error = "";
+        Error = ASupplier.Valid(SupplierName, ProductName, QuantityOfProducts, UnitPrice, DatePurchased);
+        if (Error == "")
+        {
+            ASupplier.SupplierName = SupplierName;
+            ASupplier.ProductName = ProductName;
+            ASupplier.QuantityOfProducts = Convert.ToInt32(UnitPrice);
+            ASupplier.UnitPrice = (float)Convert.ToDouble(UnitPrice);
+            ASupplier.DatePurchased = Convert.ToDateTime(DatePurchased);
+
+            Session["ASupplier"] = ASupplier;
+            Response.Write("SuppliersViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+
+        
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
