@@ -101,5 +101,56 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string ProductName, string StockQuantity, string UnitPrice, string DateOfPurchase)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            
+            if (ProductName.Length == 0)
+            {
+                Error = Error + "The product name may not be blank : ";
+            }
+            if (ProductName.Length > 50)
+            {
+                Error = Error + "The product name must be less than 50 characters : ";
+            }
+            if (StockQuantity.Length == 0)
+            {
+                Error = Error + "The quantity of products may not be blank : ";
+            }
+            if (StockQuantity.Length > 32)
+            {
+                Error = Error + "The quantity of products must be less than 32 characters : ";
+            }
+            if (UnitPrice.Length > 53)
+            {
+                Error = Error + "The unit price must be less than 53 characters : ";
+            }
+            if (UnitPrice.Length == 0)
+            {
+                Error = Error + "The unit price may not be blank : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(DateOfPurchase);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            return Error;
+
+        }
     }
 }
