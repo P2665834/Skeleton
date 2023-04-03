@@ -85,5 +85,50 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string DateRecieved, string CustomerName, string Price)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (CustomerName.Length == 0)
+            {
+                Error = Error + "The Customer Name may not be blank : ";
+            }
+            if (CustomerName.Length > 50)
+            {
+                Error = Error + "The Customer name must be less than 50 characters : ";
+            }
+            
+            if (Price.Length > 53)
+            {
+                Error = Error + "The price must be less than 53 characters : ";
+            }
+            if (Price.Length == 0)
+            {
+                Error = Error + "The price may not be blank : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(DateRecieved);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            return Error;
+
+        }
+
+
     }
 }
