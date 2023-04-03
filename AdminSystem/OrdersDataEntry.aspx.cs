@@ -15,22 +15,41 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+
         clsOrder AnOrder = new clsOrder();
         clsOrderLine AnOrderLine = new clsOrderLine();
-        AnOrder.CustomerName = txtCustomerName.Text;
-        AnOrderLine.ProductName = txtProductName.Text;
-        AnOrder.OrderID = Convert.ToInt32(txtOrderID.Text);
-        AnOrderLine.OrderLineID = Convert.ToInt32(txtOrderLineID.Text);
-        AnOrder.Price = Convert.ToInt32(txtPrice.Text);
-        AnOrderLine.Quantity = Convert.ToInt32(txtQuantity.Text);
-        AnOrder.DateRecieved = Convert.ToDateTime(txtDateRecieved.Text);
-        AnOrderLine.Dispatched = Convert.ToBoolean(chkDispatched.Checked);
 
-        Session["AnOrder"] = AnOrder;
-        Session["AnOrderLine"] = AnOrderLine;
-        Response.Redirect("OrdersViewer.aspx");
+        string OrderLineID = txtOrderLineID.Text;
+        string CustomerName = txtCustomerName.Text;
+        string ProductName = txtProductName.Text;
+        string Quantity = txtQuantity.Text;
+        string Price = txtPrice.Text;
+        string DateRecieved = txtDateRecieved.Text;
+        string Error = "";
+        Error = AnOrder.Valid(CustomerName, Price, DateRecieved);
+        Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+        if (Error == "")
+        {
+            AnOrder.CustomerName = CustomerName;
+            AnOrder.Price = (float)Convert.ToDouble(Price);
+            AnOrder.DateRecieved = Convert.ToDateTime(DateRecieved);
+
+
+            Session["AnOrder"] = AnOrder;
+            Session["AnOrderLine"] = AnOrderLine;
+            Response.Write("SuppliersViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+    
+        
+
+
 
     }
+
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -53,4 +72,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
 
     }
+
 }

@@ -7,6 +7,10 @@ namespace Testing1
     [TestClass]
     public class tstOrderLine
     {
+        string OrderLineID = "1";
+        string ProductName = "Macbook Air";
+        string Quantity = "1";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -151,6 +155,239 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
 
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineIDMinLessOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineID = "";
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderLineIDProductsMin()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineID = "";
+            OrderLineID = OrderLineID.PadRight(0);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderLineMinPlusOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineID = "";
+            OrderLineID = OrderLineID.PadRight(1);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderLineIDMaxLessOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineID = "";
+            OrderLineID = OrderLineID.PadRight(31);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderLineProductsMax()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineID = "";
+            OrderLineID = OrderLineID.PadRight(32);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderLineIDMaxPlusOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineID = "";
+            OrderLineID = OrderLineID.PadRight(33);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderLineIDMid()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineID = "";
+            OrderLineID = OrderLineID.PadRight(16);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductNameMinLessOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string ProductName = "";
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMin()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string ProductName = "a";
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMinPlusOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string ProductName = "aa";
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMaxLessOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string ProductName = "";
+            ProductName = ProductName.PadRight(49, 'a');
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMax()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string ProductName = "";
+            ProductName = ProductName.PadRight(50, 'a');
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMaxPlusOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string ProductName = "";
+            ProductName = ProductName.PadRight(51, 'a');
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductNameMid()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string ProductName = "";
+            ProductName = ProductName.PadRight(25, 'a');
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinLessOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string Quantity = "";
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMin()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(0);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinPlusOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(1);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMaxLessOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(31);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantitysMax()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(32);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMaxPlusOne()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(33);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMid()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String Error = "";
+            string Quantity = "";
+            Quantity = Quantity.PadRight(16);
+            Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
+            Assert.AreEqual(Error, "");
         }
 
     }

@@ -7,6 +7,11 @@ namespace Testing1
     [TestClass]
     public class tstOrder
     {
+        string OrderID = "1";
+        string CustomerName = "Joe Bloggs";
+        string Price = "1300";
+        string DateRecieved = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -122,6 +127,227 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
 
+        }
+
+        [TestMethod]
+        public void DateRecievedExtremeMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DatePurchased = TestDate.ToString();
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateRecievedMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-1);
+            string DatePurchased = TestDate.ToString();
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateRecievedMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DatePurchased = TestDate.ToString();
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateRecievedMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DatePurchased = TestDate.ToString();
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateRecievedExtremeMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DatePurchased = TestDate.ToString();
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CustomerName = "";
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerrNameMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CustomerName = "a";
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CustomerName = "a";
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMaxLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(49,'a');
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(50, 'a');
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(51, 'a');
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMid()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(25, 'a');
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string Price = "";
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string Price = "";
+            Price = Price.PadRight(0);
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string Price = "";
+            Price = Price.PadRight(1);
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string Price = "";
+            Price = Price.PadRight(52);
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string Price = "";
+            Price = Price.PadRight(53);
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string Price = "";
+            Price = Price.PadRight(54);
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMid()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string Price = "";
+            Price = Price.PadRight(26);
+            Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
+            Assert.AreEqual(Error, "");
+        }
     }
 }

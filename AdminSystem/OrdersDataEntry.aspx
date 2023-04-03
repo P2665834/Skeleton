@@ -75,6 +75,7 @@
         <p>
 
             <asp:Label ID="lblError" runat="server"></asp:Label>
+            <asp:Label ID="lblError1" runat="server"></asp:Label>
 
         </p>
 

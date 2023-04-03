@@ -87,5 +87,39 @@ namespace ClassLibrary
             }
 
         }
+
+        public string Valid(string OrderLineID, string ProductName, string Quantity)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (OrderLineID.Length == 0)
+            {
+                Error = Error + "The OrderLineID may not be blank : ";
+            }
+            if (OrderLineID.Length > 32)
+            {
+                Error = Error + "The OrderLineID must be less than 32 characters : ";
+            }
+            if (ProductName.Length == 0)
+            {
+                Error = Error + "The product name may not be blank : ";
+            }
+            if (ProductName.Length > 50)
+            {
+                Error = Error + "The product name must be less than 50 characters : ";
+            }
+            if (Quantity.Length == 0)
+            {
+                Error = Error + "The quantity may not be blank : ";
+            }
+            if (Quantity.Length > 32)
+            {
+                Error = Error + "The quantity of products must be less than 32 characters : ";
+
+            }
+
+            return Error;
+
+        }
     }
 }
