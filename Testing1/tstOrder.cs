@@ -207,7 +207,7 @@ namespace Testing1
             String Error = "";
             string CustomerName = "";
             Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -260,7 +260,7 @@ namespace Testing1
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(51, 'a');
             Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -281,7 +281,7 @@ namespace Testing1
             String Error = "";
             string Price = "";
             Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -292,7 +292,7 @@ namespace Testing1
             string Price = "";
             Price = Price.PadRight(0);
             Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -336,7 +336,7 @@ namespace Testing1
             string Price = "";
             Price = Price.PadRight(54);
             Error = AnOrder.Valid(DateRecieved, CustomerName, Price);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
