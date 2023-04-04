@@ -172,7 +172,7 @@ namespace Testing1
             String Error = "";
             string OrderLineID = "";
             Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -183,7 +183,7 @@ namespace Testing1
             string OrderLineID = "";
             OrderLineID = OrderLineID.PadRight(0);
             Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -227,7 +227,7 @@ namespace Testing1
             string OrderLineID = "";
             OrderLineID = OrderLineID.PadRight(33);
             Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -247,7 +247,7 @@ namespace Testing1
             String Error = "";
             string ProductName = "";
             Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -300,7 +300,7 @@ namespace Testing1
             string ProductName = "";
             ProductName = ProductName.PadRight(51, 'a');
             Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -321,7 +321,7 @@ namespace Testing1
             String Error = "";
             string Quantity = "";
             Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -332,7 +332,7 @@ namespace Testing1
             string Quantity = "";
             Quantity = Quantity.PadRight(0);
             Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -376,7 +376,7 @@ namespace Testing1
             string Quantity = "";
             Quantity = Quantity.PadRight(33);
             Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
