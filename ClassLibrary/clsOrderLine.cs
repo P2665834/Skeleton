@@ -67,6 +67,8 @@ namespace ClassLibrary
             }
         }
 
+        public clsOrderLine ThisOrderLine { get; set; }
+
         public bool Find(int OrderLineID)
         {
             clsDataConnection DB = new clsDataConnection();
