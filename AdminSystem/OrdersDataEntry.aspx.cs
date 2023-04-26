@@ -8,8 +8,10 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
+
 
     }
 
@@ -30,21 +32,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrderLine.Valid(OrderLineID, ProductName, Quantity);
         if (Error == "")
         {
+            AnOrder.OrderID = Convert.ToInt32(OrderID);
             AnOrder.CustomerName = CustomerName;
             AnOrder.Price = (float)Convert.ToDouble(Price);
             AnOrder.DateRecieved = Convert.ToDateTime(DateRecieved);
+            clsOrderCollection OrderList = new clsOrderCollection();
 
-
-            Session["AnOrder"] = AnOrder;
-            Session["AnOrderLine"] = AnOrderLine;
-            Response.Write("SuppliersViewer.aspx");
+            if (OrderID == -1)
+            {
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Add();
+            }
+            else
+            {
+                OrderList.ThisOrder.Find(OrderID);
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Update();
+            }
+            Response.Redirect("OrdersDataEntry.aspx");
         }
+
         else
         {
             lblError.Text = Error;
         }
-    
-        
+
+
 
 
 
