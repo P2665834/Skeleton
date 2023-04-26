@@ -8,10 +8,12 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SupplierId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+      
     }
+
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -27,19 +29,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ASupplier.Valid(SupplierName, ProductName, QuantityOfProducts, UnitPrice, DatePurchased);
         if (Error == "")
         {
+            ASupplier.SupplierId = Convert.ToInt32(SupplierId);
             ASupplier.SupplierName = SupplierName;
             ASupplier.ProductName = ProductName;
-            ASupplier.QuantityOfProducts = Convert.ToInt32(UnitPrice);
+            ASupplier.QuantityOfProducts = Convert.ToInt32(QuantityOfProducts);
             ASupplier.UnitPrice = (float)Convert.ToDouble(UnitPrice);
             ASupplier.DatePurchased = Convert.ToDateTime(DatePurchased);
+            ASupplier.Available = chkAvailable.Checked;
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
 
-            Session["ASupplier"] = ASupplier;
-            Response.Write("SuppliersViewer.aspx");
+            if (SupplierId == -1)
+            {
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Add();
+            }
+            else
+            {
+                SupplierList.ThisSupplier.Find(SupplierId);
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Update();
+            }
+            Response.Redirect("SuppliersDataEntry.aspx");
         }
         else
         {
             lblError.Text = Error;
         }
+
 
         
     }
