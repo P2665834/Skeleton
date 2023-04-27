@@ -93,7 +93,7 @@ namespace ClassLibrary
         if (string.IsNullOrEmpty(name))
         {
 
-            Error += "The name may not be blank : ";
+            Error += "The name may not be blank! : ";
         }
 
         if (name.Length > 50)

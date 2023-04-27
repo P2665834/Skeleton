@@ -7,7 +7,7 @@ namespace CustomerTesting
     [TestClass]
     public class tstCustomer
     {
-        string Name = "Sofian";
+        string Name = "SofianEM";
         string EmailAddress = "sofianelmaghrebi@hotmail.com";
         string PhoneNumber = "07789979887";
         string DateofBirth = Convert.ToDateTime("2003/04/21").ToString();

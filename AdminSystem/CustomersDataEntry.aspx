@@ -41,7 +41,7 @@
         <asp:TextBox ID="txtPhoneNumber" runat="server" style="z-index: 1; left: 155px; top: 309px; position: absolute" TextMode="Phone" Font-Size="Medium" height="26px" width="191px"></asp:TextBox>
         <asp:Label ID="lblDateofBirth" runat="server" style="z-index: 1; left: 34px; top: 259px; position: absolute; height: 31px; width: 131px" Text="Date of Birth" Font-Size="Medium"></asp:Label>
         <asp:TextBox ID="txtDateofBirth" runat="server" style="z-index: 1; left: 157px; top: 254px; position: absolute" Font-Size="Medium" height="26px" width="191px"></asp:TextBox>
-        <asp:CheckBox ID="chkSignUp" runat="server" style="z-index: 1; left: 27px; top: 427px; position: absolute; height: 23px; width: 145px; right: 622px;" Text="SignUp" TextAlign="Left" Font-Size="Medium" OnCheckedChanged="chkActive_CheckedChanged" />
+        <asp:CheckBox ID="chkSignUp" runat="server" style="z-index: 1; left: 27px; top: 416px; position: absolute; height: 23px; width: 145px; right: 1338px;" Text="SignUp" TextAlign="Left" Font-Size="Medium" OnCheckedChanged="chkActive_CheckedChanged" />
         <asp:Button ID="btnOK" runat="server" BorderColor="#003366" BorderStyle="Solid" BorderWidth="4px" ForeColor="#003366" OnClick="btnOK_Click" style="z-index: 1; left: 398px; top: 164px; position: absolute; height: 47px; width: 83px" Text="OK" Font-Size="Medium" />
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 33px; top: 364px; position: absolute; height: 31px; width: 131px;" Text="Address" Font-Size="Medium"></asp:Label>
         <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 156px; top: 364px; position: absolute; height: 26px; width: 191px;" Font-Size="Medium"></asp:TextBox>
