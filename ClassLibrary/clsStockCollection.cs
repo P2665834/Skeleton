@@ -8,44 +8,13 @@ namespace ClassLibrary
 
     {
         List<clsStock> mStockList = new List<clsStock>();
+        clsStock mThisStock = new clsStock();
 
         public clsStockCollection()
         {
-            clsStock TestItem = new clsStock();
-            TestItem.ProductID = 1;
-            TestItem.ProductName = "15s - fq2024na";
-            TestItem.StockQuantity = 25;
-            TestItem.UnitPrice = 200;
-            TestItem.DateOfPurchase = DateTime.Now.Date;
-            TestItem.Available = true;
-
-            mStockList.Add(TestItem);
-            TestItem = new clsStock();
-            TestItem.ProductID = 2;
-            TestItem.ProductName = "Asus Chromebook CM14";
-            TestItem.StockQuantity = 29;
-            TestItem.UnitPrice = 300;
-            TestItem.DateOfPurchase = DateTime.Now.Date;
-            TestItem.Available = true;
-            mStockList.Add(TestItem);
-
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblStock_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsStock AStock = new clsStock();
-                AStock.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
-                AStock.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
-                AStock.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["Quantity"]);
-                AStock.UnitPrice = (float)Convert.ToDouble(DB.DataTable.Rows[Index]["UnitPrice"]);
-                AStock.DateOfPurchase = Convert.ToDateTime(DB.DataTable.Rows[Index]["DatePurchased"]);
-                AStock.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
-                mStockList.Add(AStock);
-                Index++;
-            }
+            PopulateArray(DB);
         }
 
 
@@ -74,6 +43,77 @@ namespace ClassLibrary
 
             }
         }
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock
+        {
+            get
+            {
+                return mThisStock;
+            }
+            set
+            {
+                mThisStock = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductName", mThisStock.ProductName);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@UnitPrice", mThisStock.UnitPrice);
+            DB.AddParameter("@DateOfPurchase", mThisStock.DateOfPurchase);
+            DB.AddParameter("@Available", mThisStock.Available);
+            return DB.Execute("sproc_tblStock_Insert");
+
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", mThisStock.ProductID);
+            DB.AddParameter("@ProductName", mThisStock.ProductName);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@UnitPrice", mThisStock.UnitPrice);
+            DB.AddParameter("@DateOfPurchase", mThisStock.DateOfPurchase);
+            DB.AddParameter("@Available", mThisStock.Available);
+            DB.Execute("sproc_tblStock_Update");
+
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", mThisStock.ProductID);
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void ReportByProductName(string ProductName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductName", ProductName);
+            DB.Execute("sproc_tblStock_FilterByProductName");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount = 0;
+            RecordCount = DB.Count;
+            mStockList = new List<clsStock>();
+            while (Index < RecordCount)
+            {
+                clsStock AStock = new clsStock();
+                AStock.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
+                AStock.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
+                AStock.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["Quantity"]);
+                AStock.UnitPrice = (float)Convert.ToDouble(DB.DataTable.Rows[Index]["UnitPrice"]);
+                AStock.DateOfPurchase = Convert.ToDateTime(DB.DataTable.Rows[Index]["DatePurchased"]);
+                AStock.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
+                mStockList.Add(AStock);
+                Index++;
+            }
+        }
+
     }
 }
