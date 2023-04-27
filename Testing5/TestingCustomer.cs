@@ -72,7 +72,7 @@ namespace CustomerTesting
             
             Assert.AreEqual(ACostumer.PhoneNumber, TestData);
         }
-
+    
         [TestMethod]
         public void DateofBirthOK()
         {
