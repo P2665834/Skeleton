@@ -60,6 +60,19 @@ namespace TestingCustomer
 
             Assert.AreEqual(ACostumer.EmailAddress, TestData);
         }
+        
+        [TestMethod]
+        public void AddressOK()
+        {
+
+            clsCustomer ACostumer = new clsCustomer();
+
+            String TestData = "TheGrange";
+
+            ACostumer.Address = TestData;
+
+            Assert.AreEqual(ACostumer.Address, TestData);
+        }
 
         [TestMethod]
         public void PhoneNumberOK()
@@ -173,6 +186,28 @@ namespace TestingCustomer
                 Found = customer.Find(customerID);
 
                 if (customer.EmailAddress != "Samual@outlook.com")
+                {
+                    OK = false;
+                }
+
+                Assert.IsTrue(OK);
+            }
+
+            [TestMethod]
+            public void AddressFound()
+            {
+
+                clsCustomer customer = new clsCustomer();
+
+                Boolean Found = false;
+
+                Boolean OK = true;
+
+                Int32 customerID = 1;
+
+                Found = customer.Find(customerID);
+
+                if (customer.Address != "TheGrange")
                 {
                     OK = false;
                 }
