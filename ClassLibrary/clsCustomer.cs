@@ -180,10 +180,10 @@ namespace ClassLibrary
 
             }
                
-            if (Address.Length > 150)
+            if (Address.Length > 50)
             {
 
-                Error += "The Address must be less than 150 characters : ";
+                Error += "The Address must be less than 50 characters : ";
             }
 
                     try
