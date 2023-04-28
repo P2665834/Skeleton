@@ -1,22 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using ClassLibrary 
 
-using Xamarin.Forms;
 
-namespace Testing5
+
+namespace TestingCustomer
 {
-    public class tstCustomerCollection : ContentView
-    {
-        public tstCustomerCollection()
-        {
-            Content = new StackLayout
-            {
-                Children = {
-                    new Label { Text = "Welcome to Xamarin.Forms!" }
-                }
-            };
-        }
-    }
-}
+    public class tstCustomerCollection
+    } 
+  
+

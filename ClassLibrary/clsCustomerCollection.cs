@@ -95,14 +95,14 @@ namespace ClassLibrary
         public void FilterBy(string Name)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@Name", Name);
+            DB.AddParameter("@Name", mThisCustomer.Name);
             DB.Execute("sproc_tblCustomer_FilterByName");
             PopulateArray(DB);
         }
         public void SortBy(string CustomerID)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CustomerID", CustomerID);
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
             DB.Execute("sproc_tblCustomer_FilterByCustomerID");
             PopulateArray(DB);
         }
