@@ -2,13 +2,13 @@ using System;
 
 namespace ClassLibrary
 {
-    public class Customer
+    public class clsCustomer
 
     {
         private Int32 mCustomerID;
         private String mName;
         private String mEmailAddress;
-        private Int32 PhoneNumber;
+        private Int32 mPhoneNumber;
         private Boolean mSignUp;
         private String mAddress;
         private DateTime mDateofBirth;
@@ -27,7 +27,7 @@ namespace ClassLibrary
             }
         }
 
-        private String Name
+        public String Name
 
         {
             get
@@ -40,7 +40,7 @@ namespace ClassLibrary
             }
         }
 
-        private String EmailAddress
+        public String EmailAddress
 
         {
             get
@@ -53,7 +53,7 @@ namespace ClassLibrary
             }
         }
 
-        private Int32 mPhoneNumber
+        public Int32 PhoneNumber
 
         {
             get
@@ -66,7 +66,7 @@ namespace ClassLibrary
             }
         }
 
-        private DateTime DateofBirth
+        public DateTime DateofBirth
 
         {
             get
@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
         }
 
-        private Boolean SignUp
+        public Boolean SignUp
 
         {
             get
@@ -91,7 +91,7 @@ namespace ClassLibrary
                 mSignUp = value;
             }
         }
-        private String Address
+        public String Address
 
         {
             get
